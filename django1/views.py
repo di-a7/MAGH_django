@@ -36,13 +36,13 @@ def home(request):
    ]
    context = {
       "title": "HOME Page",
-      "body":"!!!!",
+      "body":"HOME",
       "PEOPLE": people
    }
    return render(request,'home.html',context)
 
 def aboutus(request):
-   return HttpResponse("ABOUT US PAGE.")
+   return render(request,'aboutus.html')
 
 # create aboutus, contactus
 # aboutus render aboutus html page
