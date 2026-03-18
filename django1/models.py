@@ -5,6 +5,9 @@ class Todolist(models.Model):
    title = models.CharField(max_length=100)
    description = models.TextField()
    status = models.BooleanField(default=False,null=True, blank=True)
+   
+   def __str__(self):
+      return self.title
 
 # models.py -> migration_file -> database_table
 # create_class  makemigrations     migrate
