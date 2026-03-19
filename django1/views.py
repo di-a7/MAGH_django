@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Todolist
 # Create your views here.
@@ -61,3 +61,24 @@ def todolist(request):
       "incomplete":incomplete
    }
    return render(request,'list.html',context)
+
+def create(request):
+   if request.method == "POST":
+      user_title = request.POST.get('title')
+      user_description = request.POST.get('description')
+      if user_title == "" or user_description == "":
+         context = {
+            "error":":Both field required."
+         }
+         return render(request,'create.html', context)
+      Todolist.objects.create(title = user_title, description = user_description)
+      return redirect('/task/')
+   return render(request,'create.html')
+
+
+# {
+#    "title":"skdjfhskjdfhdsf",
+#    "description":"skjdskjdf"
+# }
+
+# 
