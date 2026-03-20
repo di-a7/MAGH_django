@@ -76,9 +76,55 @@ def create(request):
    return render(request,'create.html')
 
 
-# {
-#    "title":"skdjfhskjdfhdsf",
-#    "description":"skjdskjdf"
-# }
+def complete(request,id):
+   task = Todolist.objects.get(id = id)
+   task.status = True
+   task.save()
+   return redirect('/task/')
 
-# 
+def update(request, id):
+   task = Todolist.objects.get(id = id)
+   if request.method == 'POST':
+      user_title = request.POST.get('title')
+      user_description = request.POST.get('description')
+      task.title = user_title
+      task.description = user_description
+      task.save()
+      return redirect('/task/')
+   context = {
+      'task':task
+   }
+   return render(request,'update.html', context)
+
+# button in html file, url, view, to delete
+
+
+# Portfolio 
+
+#### User ###
+# FullName
+# degree
+# course
+# contact
+# linkin_link
+# fb_link
+# ista_link
+# github_link
+# summary
+# imagege(optional) ImageField
+
+### Skill ###
+# name of skills
+# skill_img (optional)
+
+
+### Projects ###
+# Project name
+# Project image
+# project github_repo
+
+# views: 
+# homepage: userdetail, userskill (from database)
+# project: project details (from database)
+
+# webpage: landing page, projects 

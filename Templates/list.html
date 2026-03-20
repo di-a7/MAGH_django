@@ -16,6 +16,7 @@
                <th scope="col">Title</th>
                <th scope="col">Description</th>
                <th scope="col">Status</th>
+               <th scope="col">Actions</th>
             </tr>
          </thead>
          <tbody>
@@ -35,7 +36,11 @@
                   </span>
                   {% endif %}
                   </td>
-            </tr>
+                  <td>
+                     <a href=/task/mark/{{task.id}}/ class="btn btn-success">Mark</a>
+                     <a href=/task/edit/{{task.id}}/ class="btn btn-primary">Update</a>
+                  </td>
+               </tr>
             {% endfor %}
          </tbody>
          </table>
